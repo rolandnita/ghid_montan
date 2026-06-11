@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import Button from '../components/Button.astro';
+import { SITE_CONFIG } from '../utils/config';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contactează-mă pentru a discuta tururi personalizate, întrebări despre alpinism sau pentru a pune la punct aventura ta în munți."
+  currentPath="/contact"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <SectionTitle
+      title="Contactează-mă"
+      subtitle="Sunt aici pentru a răspunde la întrebări și pentru a ajuta cu planurile tale de aventură în munte."
+    />
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+      <!-- Contact Info Cards -->
+      <div class="glass p-8 rounded-xl">
+        <div class="text-4xl mb-4">📧</div>
+        <h3 class="text-xl font-bold text-slate-100 mb-2">Email</h3>
+        <a
+          href={`mailto:${SITE_CONFIG.email}`}
+          class="text-amber-400 hover:text-amber-300 transition-colors break-all"
+        >
+          {SITE_CONFIG.email}
+        </a>
+        <p class="text-slate-400 text-sm mt-2">Răspund în 24 de ore</p>
+      </div>
+
+      <div class="glass p-8 rounded-xl">
+        <div class="text-4xl mb-4">📱</div>
+        <h3 class="text-xl font-bold text-slate-100 mb-2">Telefon</h3>
+        <a
+          href={`tel:${SITE_CONFIG.phone}`}
+          class="text-amber-400 hover:text-amber-300 transition-colors"
+        >
+          {SITE_CONFIG.phone}
+        </a>
+        <p class="text-slate-400 text-sm mt-2">Disponibil 8AM - 8PM</p>
+      </div>
+
+      <div class="glass p-8 rounded-xl">
+        <div class="text-4xl mb-4">📍</div>
+        <h3 class="text-xl font-bold text-slate-100 mb-2">Locație</h3>
+        <p class="text-slate-300">{SITE_CONFIG.location}</p>
+        <p class="text-slate-400 text-sm mt-2">Bază din Carpații Centrali</p>
+      </div>
+    </div>
+
+    <!-- Contact Form Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+      <!-- Form -->
+      <div class="glass p-10 rounded-xl">
+        <h2 class="text-2xl font-bold text-slate-100 mb-6">Trimite-mi un Mesaj</h2>
+
+        <form name="contact" method="POST" netlify action="/success/">
+          <div class="mb-6">
+            <label for="name" class="block text-sm font-medium text-slate-300 mb-2">Nume *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full px-4 py-3 bg-slate-900/50 border border-slate-700/50 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20"
+              placeholder="Numele tău"
+            />
+          </div>
+
+          <div class="mb-6">
+            <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-3 bg-slate-900/50 border border-slate-700/50 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20"
+              placeholder="email@example.com"
+            />
+          </div>
+
+          <div class="mb-6">
+            <label for="phone" class="block text-sm font-medium text-slate-300 mb-2">Telefon</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="w-full px-4 py-3 bg-slate-900/50 border border-slate-700/50 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20"
+              placeholder="+40 123 456 7890"
+            />
+          </div>
+
+          <div class="mb-6">
+            <label for="subject" class="block text-sm font-medium text-slate-300 mb-2">Subiect *</label>
+            <select
+              id="subject"
+              name="subject"
+              required
+              class="w-full px-4 py-3 bg-slate-900/50 border border-slate-700/50 rounded-lg text-slate-100 focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20"
+            >
+              <option value="">Alege un subiect</option>
+              <option value="Interogație tur">Interogație tur</option>
+              <option value="Tur personalizat">Tur personalizat</option>
+              <option value="Curs alpinism">Curs alpinism</option>
+              <option value="Altul">Altul</option>
+            </select>
+          </div>
+
+          <div class="mb-6">
+            <label for="message" class="block text-sm font-medium text-slate-300 mb-2">Mesaj *</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              class="w-full px-4 py-3 bg-slate-900/50 border border-slate-700/50 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 resize-none"
+              placeholder="Spune-mi mai mult despre aventura ta..."
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="btn-primary w-full"
+          >
+            Trimite Mesaj
+          </button>
+
+          <p class="text-slate-400 text-xs mt-4">* Câmpuri obligatorii</p>
+        </form>
+      </div>
+
+      <!-- Info Section -->
+      <div>
+        <div class="glass p-10 rounded-xl mb-8">
+          <h2 class="text-2xl font-bold text-slate-100 mb-6">Informații Frecvente</h2>
+
+          <div class="space-y-6">
+            <div>
+              <h3 class="font-bold text-slate-100 mb-2">Care este cea mai bună perioadă pentru tururi?</h3>
+              <p class="text-slate-400">
+                Vara (iunie-septembrie) e perioada ideală. Totuși, ofer tururi pe tot parcursul anului pentru
+                experiențe unice în iarnă.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="font-bold text-slate-100 mb-2">Trebuie să fiu un alpinist experimentat?</h3>
+              <p class="text-slate-400">
+                Nu! Ofer tururi pentru orice nivel, de la începători la avansați. Fiecare tur e personalizat
+                după abilități.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="font-bold text-slate-100 mb-2">Cu câte zile trebuie să mă înscriu în avans?</h3>
+              <p class="text-slate-400">
+                Prefer preaviz minim de 2 săptămâni pentru a personaliza tururile. Contactează-mă pentru
+                urgențe.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="font-bold text-slate-100 mb-2">Ce echipament trebuie să port?</h3>
+              <p class="text-slate-400">
+                Furnizez echipament major de sigurență. Ai nevoie de haine corespunzătoare și cizme de
+                trekking.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="space-y-4">
+          <div class="glass p-6 rounded-xl">
+            <p class="text-sm text-slate-400 mb-4">Preferă să suni direct?</p>
+            <a href={`tel:${SITE_CONFIG.phone}`} class="btn-primary block text-center">
+              Sună acum
+            </a>
+          </div>
+
+          <div class="glass p-6 rounded-xl">
+            <p class="text-sm text-slate-400 mb-4">Preferă email?</p>
+            <a href={`mailto:${SITE_CONFIG.email}`} class="btn-secondary block text-center">
+              Trimite email
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map placeholder -->
+    <div class="glass rounded-xl overflow-hidden h-96">
+      <img
+        src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200&h=500&fit=crop"
+        alt="Carpații Români"
+        class="w-full h-full object-cover"
+      />
+    </div>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+  }
+</style>

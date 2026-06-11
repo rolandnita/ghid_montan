@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import TourCard from '../components/TourCard.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import CTASection from '../components/CTASection.astro';
+import DemoBanner from '../components/DemoBanner.astro';
+import Button from '../components/Button.astro';
+import { getCollection } from 'astro:content';
+
+// Get featured tours and articles
+const allTours = await getCollection('tours');
+const allArticles = await getCollection('articles');
+
+const featuredTours = allTours.slice(0, 3);
+const featuredArticles = allArticles.slice(0, 3);
+---
+
+<BaseLayout title="Home" currentPath="/">
+  <!-- Hero Section -->
+  <Hero
+    title="Explorează Carpații Români"
+    subtitle="Aventuri autentice în munte cu un ghid profesionist și militar. Descoperă peisajele spectaculoase ale Carpaților sub îndrumarea unui expert experimentat în alpinism și navigație montană."
+    ctaText="Rezervă-ți turoul"
+    ctaHref="/tours"
+  />
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Demo Banner -->
+    <div class="mt-12">
+      <DemoBanner />
+    </div>
+
+    <!-- Trust Indicators Section -->
+    <section class="py-20 border-b border-slate-800/50">
+      <SectionTitle
+        title="De ce să alegi un ghid profesionist?"
+        subtitle="Cu peste 15 ani de experiență în alpinism și instruire militară"
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="glass p-8 rounded-xl">
+          <div class="text-4xl mb-4">🏔️</div>
+          <h3 class="text-xl font-bold text-slate-100 mb-3">Experiență Certificată</h3>
+          <p class="text-slate-400">
+            Ghid profesionist certificat cu pregătire militară în medii montane extreme. Cunosc fiecare
+            cărări din Carpații Români.
+          </p>
+        </div>
+
+        <div class="glass p-8 rounded-xl">
+          <div class="text-4xl mb-4">⛑️</div>
+          <h3 class="text-xl font-bold text-slate-100 mb-3">Siguranță Garantată</h3>
+          <p class="text-slate-400">
+            Echipament de sigurță complet. Planuri de urgență pentru fiecare turul. Comunicare în timp
+            real cu bazele de salvare.
+          </p>
+        </div>
+
+        <div class="glass p-8 rounded-xl">
+          <div class="text-4xl mb-4">🗺️</div>
+          <h3 class="text-xl font-bold text-slate-100 mb-3">Personalizare Totală</h3>
+          <p class="text-slate-400">
+            Fiecare tur este adaptat la nivelul și preferințele tale. Grupe mici (2-6 persoane) pentru
+            o experiență autentică.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Tours Section -->
+    <section class="py-20 border-b border-slate-800/50">
+      <SectionTitle
+        title="Tururi Recomandate"
+        subtitle="Selectate din cele mai spectaculoase rute din Carpații Români"
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {featuredTours.map((tour) => (
+          <TourCard
+            title={tour.data.title}
+            location={tour.data.location}
+            difficulty={tour.data.difficulty}
+            duration={tour.data.duration}
+            distance={tour.data.distance}
+            elevationGain={tour.data.elevationGain}
+            status={tour.data.status}
+            image={tour.data.image}
+            slug={tour.data.slug}
+          />
+        ))}
+      </div>
+
+      <div class="text-center">
+        <Button href="/tours" variant="secondary" size="lg">
+          Vezi toate tururile →
+        </Button>
+      </div>
+    </section>
+
+    <!-- Academy Preview Section -->
+    <section class="py-20 border-b border-slate-800/50">
+      <SectionTitle
+        title="Academia de Munte"
+        subtitle="Articole educative și sfaturi practice pentru aventurieri"
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {featuredArticles.map((article) => (
+          <ArticleCard
+            title={article.data.title}
+            excerpt={article.data.excerpt}
+            category={article.data.category}
+            publishedAt={article.data.publishedAt}
+            readingTime={article.data.readingTime}
+            image={article.data.image}
+            slug={article.data.slug}
+          />
+        ))}
+      </div>
+
+      <div class="text-center">
+        <Button href="/academy" variant="secondary" size="lg">
+          Explorează academia →
+        </Button>
+      </div>
+    </section>
+
+    <!-- Why Go With a Guide Section -->
+    <section class="py-20">
+      <SectionTitle
+        title="De ce tura cu ghid?"
+        subtitle="Beneficiile unei aventuri profesionale și sigure"
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="space-y-4">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 text-amber-500 text-2xl">✓</div>
+            <div>
+              <h3 class="font-bold text-slate-100 mb-2">Siguritate Maximă</h3>
+              <p class="text-slate-400">Echipament profesional și protocoale de siguranță verificate.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 text-amber-500 text-2xl">✓</div>
+            <div>
+              <h3 class="font-bold text-slate-100 mb-2">Cunoscători ai Terenului</h3>
+              <p class="text-slate-400">Știu rutele secrete și cele mai frumoase locuri din munte.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 text-amber-500 text-2xl">✓</div>
+            <div>
+              <h3 class="font-bold text-slate-100 mb-2">Experiență Nevăzută</h3>
+              <p class="text-slate-400">Povești și cunoștințe locale care nu vei găsi în ghiduri.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 text-amber-500 text-2xl">✓</div>
+            <div>
+              <h3 class="font-bold text-slate-100 mb-2">Pregătire Fitness</h3>
+              <p class="text-slate-400">Instruire personalizată adaptată nivelului tău de condiție fizică.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass p-8 rounded-xl">
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop"
+            alt="Mountain guide experience"
+            class="w-full h-64 object-cover rounded-lg mb-6"
+          />
+          <p class="text-slate-400 mb-4">
+            Fiecare tur este o oportunitate de a cunoaște munții într-un mod authentic și sigur. Cu
+            pregătire militară și experiență vastă, pot să te duc în locuri pe care nu le-ai crede
+            posibile de atins.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Contact CTA Section -->
+  <CTASection
+    title="Gata de Aventură?"
+    description="Rezervă-ți locul pentru următoarea expediție. Grupe mici, atenție personalizată, experiență de neuitată."
+    ctaText="Contactează-mă astazi"
+    ctaHref="/contact"
+  />
+</BaseLayout>

@@ -1,0 +1,65 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  ctaText?: string;
+  ctaHref?: string;
+  image?: string;
+  className?: string;
+}
+
+const { 
+  title, 
+  subtitle, 
+  ctaText = 'Explorezează',
+  ctaHref = '/',
+  image,
+  className = '',
+} = Astro.props;
+---
+
+<div class={`relative w-full min-h-screen flex items-center justify-center overflow-hidden mountain-fog ${className}`}>
+  <!-- Background image with overlay -->
+  {image && (
+    <div class="absolute inset-0 z-0">
+      <img
+        src={image}
+        alt="Hero background"
+        class="w-full h-full object-cover opacity-30"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/50 to-slate-950"></div>
+    </div>
+  )}
+
+  <!-- Decorative elements -->
+  <div class="absolute top-20 left-10 w-72 h-72 bg-amber-600/5 rounded-full blur-3xl opacity-30"></div>
+  <div class="absolute bottom-0 right-20 w-96 h-96 bg-cyan-600/5 rounded-full blur-3xl opacity-20"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+      <span class="text-gradient">{title}</span>
+    </h1>
+    <p class="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed max-w-3xl mx-auto">
+      {subtitle}
+    </p>
+    
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+      <Button href={ctaHref} variant="primary" size="lg">
+        {ctaText}
+      </Button>
+      <Button href="/contact" variant="secondary" size="lg">
+        Contactează-mă
+      </Button>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-pulse">
+      <svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </div>
+</div>

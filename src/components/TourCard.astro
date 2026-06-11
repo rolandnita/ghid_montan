@@ -1,0 +1,94 @@
+---
+import Badge from './Badge.astro';
+import { getDifficultyColor, getStatusBadge } from '../utils/config';
+
+interface Props {
+  title: string;
+  location: string;
+  difficulty: string;
+  duration: string;
+  distance: string;
+  elevationGain: string;
+  status: string;
+  image: string;
+  slug: string;
+}
+
+const {
+  title,
+  location,
+  difficulty,
+  duration,
+  distance,
+  elevationGain,
+  status,
+  image,
+  slug,
+} = Astro.props;
+
+const statusBadge = getStatusBadge(status);
+const difficultyColor = getDifficultyColor(difficulty);
+---
+
+<a href={`/tours/${slug}`} class="group">
+  <div class="glass-hover h-full overflow-hidden">
+    <!-- Image -->
+    <div class="relative h-48 sm:h-56 overflow-hidden">
+      <img
+        src={image}
+        alt={title}
+        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-950/60"></div>
+
+      <!-- Status badge -->
+      <div class="absolute top-4 right-4 z-10">
+        <span class={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${statusBadge.color}`}>
+          {statusBadge.text}
+        </span>
+      </div>
+
+      <!-- Location -->
+      <div class="absolute bottom-4 left-4 right-4">
+        <p class="text-slate-200 text-sm font-medium flex items-center gap-2">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+          </svg>
+          {location}
+        </p>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="p-6">
+      <h3 class="text-xl font-bold text-slate-100 mb-4 group-hover:text-amber-400 transition-colors">
+        {title}
+      </h3>
+
+      <!-- Difficulty -->
+      <div class="mb-4">
+        <Badge text={difficulty} className={difficultyColor} />
+      </div>
+
+      <!-- Details grid -->
+      <div class="grid grid-cols-2 gap-4 text-sm">
+        <div>
+          <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Durată</p>
+          <p class="text-slate-200 font-medium">{duration}</p>
+        </div>
+        <div>
+          <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Distanță</p>
+          <p class="text-slate-200 font-medium">{distance}</p>
+        </div>
+        <div>
+          <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Elevație</p>
+          <p class="text-slate-200 font-medium">{elevationGain}</p>
+        </div>
+        <div>
+          <p class="text-slate-500 text-xs uppercase tracking-wider mb-1">Grup</p>
+          <p class="text-slate-200 font-medium">2-6 persoane</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

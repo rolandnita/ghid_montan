@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import CTASection from '../components/CTASection.astro';
+import Button from '../components/Button.astro';
+---
+
+<BaseLayout
+  title="Despre Mine"
+  description="Cunoaște-mă: Alexandru Cristian, ghid de munte profesionist cu experiență militară în Carpații Români."
+  currentPath="/about"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+      <!-- Image -->
+      <div class="relative">
+        <div class="rounded-xl overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop"
+            alt="Alexandru Cristian - Mountain Guide"
+            class="w-full h-auto"
+          />
+        </div>
+        <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-amber-600/20 rounded-full blur-2xl"></div>
+      </div>
+
+      <!-- Content -->
+      <div>
+        <h1 class="text-5xl font-bold mb-6 text-slate-100">
+          Alexandru Cristian
+        </h1>
+        <p class="text-xl text-amber-400 font-semibold mb-6">Ghid de Munte Profesionist • Expert Alpinism</p>
+
+        <div class="space-y-4 text-slate-300 mb-8">
+          <p>
+            Sunt Alexandru Cristian, ghid de munte certificat cu peste 15 ani de experiență în alpinism și
+            navigație montană. Pasiunea mea pentru munți a început în copilărie și s-a dezvoltat
+            profesional prin training militar și certificări internaționale.
+          </p>
+
+          <p>
+            Am petrecut ani în pregătire militară de munte, învățând să navighez în condiții extreme și
+            să mă descurc în orice situație. Aceste abilități, combinate cu dragostea pentru Carpații
+            Români, m-au făcut să dedic cariera în a ajuta oamenii să descopere frumusețea și magia
+            munților în siguranță.
+          </p>
+
+          <p>
+            Fiecare tur pe care îl conduc este o combinație de aventură autentică, educație montană și
+            atenție personalizată. Cred că munții nu trebuie doar vizitați - trebuie experimentați, respectați
+            și iubiți.
+          </p>
+        </div>
+
+        <div class="flex gap-4">
+          <Button href="/tours" variant="primary" size="lg">
+            Explorează tururile
+          </Button>
+          <Button href="/contact" variant="secondary" size="lg">
+            Contactează-mă
+          </Button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expertise Section -->
+    <section class="py-20 border-t border-b border-slate-800/50">
+      <SectionTitle title="Competențe și Certificări" align="center" />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="glass p-6 rounded-xl">
+          <h3 class="text-lg font-bold text-slate-100 mb-3">🏔️ Ghid Profesionist Certificat</h3>
+          <p class="text-slate-400 text-sm">Acreditare internațională pentru conducerea tururilor montane în medii alpine.</p>
+        </div>
+
+        <div class="glass p-6 rounded-xl">
+          <h3 class="text-lg font-bold text-slate-100 mb-3">🪂 Instruitor Alpinism</h3>
+          <p class="text-slate-400 text-sm">Pregătire avansată în tecnici de escaladă, coarde și navigație pe vârfuri.</p>
+        </div>
+
+        <div class="glass p-6 rounded-xl">
+          <h3 class="text-lg font-bold text-slate-100 mb-3">⛑️ Specialist Salvare Montană</h3>
+          <p class="text-slate-400 text-sm">Instruire în prim ajutor avansat și proceduri de salvare în mediu montan.</p>
+        </div>
+
+        <div class="glass p-6 rounded-xl">
+          <h3 class="text-lg font-bold text-slate-100 mb-3">🗺️ Navigație Terenu</h3>
+          <p class="text-slate-400 text-sm">Expert în citirea hărților, GPS și navigație în teren dificil, fără cărări.</p>
+        </div>
+
+        <div class="glass p-6 rounded-xl">
+          <h3 class="text-lg font-bold text-slate-100 mb-3">🧗 Escaladă pe Roca</h3>
+          <p class="text-slate-400 text-sm">Instruire în escaladă sport și tradițională. Cunoaștere aprofundată a falezelor Carpaților.</p>
+        </div>
+
+        <div class="glass p-6 rounded-xl">
+          <h3 class="text-lg font-bold text-slate-100 mb-3">❄️ Alpinism de Iarnă</h3>
+          <p class="text-slate-400 text-sm">Specialitate în tururi de iarnă, avalanșe și navigație în condiții de zăpadă.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="py-20">
+      <SectionTitle title="Filosofia Mea" align="center" />
+
+      <div class="max-w-3xl mx-auto glass p-10 rounded-xl">
+        <p class="text-lg text-slate-300 leading-relaxed mb-6">
+          "Munții nu sunt o destinație - sunt o stare a sufletului. Fiecare turist care vin cu mine nu e
+          doar un client, e un partener în aventură. Scopul meu nu e doar să îi duc pe vârfuri, ci să le
+          arăt cum să asculte munții, să înțeleagă puterea naturii și să se întoarcă acasă cu o perspectivă
+          nouă asupra vieții."
+        </p>
+
+        <p class="text-lg text-slate-300 leading-relaxed">
+          Cred în tururi responsabile, în respect pentru mediu și în construirea unei comunități de
+          alpiniști conștienți. Fiecare pas în munte e o oportunitate de a învăța ceva nou despre
+          noi înșine.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <CTASection
+    title="Gata de Aventură?"
+    description="Rezervă-ți turoul și descoperă Carpații Români cu ajutorul unui ghid profesionist."
+    ctaText="Rezervă acum"
+    ctaHref="/contact"
+  />
+</BaseLayout>

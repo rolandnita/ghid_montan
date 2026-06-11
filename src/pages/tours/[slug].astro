@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Badge from '../../components/Badge.astro';
+import Button from '../../components/Button.astro';
+import CTASection from '../../components/CTASection.astro';
+import { getCollection } from 'astro:content';
+import { getDifficultyColor, getStatusBadge } from '../../utils/config';
+
+export async function getStaticPaths() {
+  const tours = await getCollection('tours');
+  return tours.map((tour) => ({
+    params: { slug: tour.data.slug || tour.id },
+    props: { tour },
+  }));
+}
+
+const { tour } = Astro.props;
+const { title, location, difficulty, duration, distance, elevationGain, groupSize, season, status, description, equipment, image } = tour.data;
+
+const difficultyColor = getDifficultyColor(difficulty);
+const statusBadge = getStatusBadge(status);
+---
+
+<BaseLayout
+  title={title}
+  description={`${title} în ${location}. Dificultate: ${difficulty}. Durată: ${duration}. ${description.substring(0, 100)}...`}
+  currentPath={`/tours/${tour.data.slug}`}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <!-- Hero Image -->
+    <div class="relative h-96 md:h-[500px] rounded-xl overflow-hidden mb-12 mountain-fog">
+      <img src={image} alt={title} class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-950"></div>
+
+      <!-- Title overlay -->
+      <div class="absolute bottom-0 left-0 right-0 p-8">
+        <h1 class="text-5xl md:text-6xl font-bold text-slate-100 mb-4">{title}</h1>
+        <div class="flex flex-wrap items-center gap-4">
+          <Badge text={difficulty} className={difficultyColor} />
+          <Badge text={statusBadge.text} color="info" />
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+      <!-- Main content -->
+      <div class="lg:col-span-2">
+        <!-- Description -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold text-slate-100 mb-4">Descriere</h2>
+          <div class="prose prose-invert max-w-none">
+            <p class="text-lg text-slate-300 leading-relaxed">{description}</p>
+          </div>
+        </section>
+
+        <!-- Equipment Section -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold text-slate-100 mb-6">Echipament Necesar</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {equipment.map((item) => (
+              <div class="glass p-4 rounded-lg flex items-start gap-3">
+                <span class="text-amber-500 text-xl">✓</span>
+                <span class="text-slate-300">{item}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- Highlights -->
+        <section>
+          <h2 class="text-3xl font-bold text-slate-100 mb-6">Ce Vei Experimenta</h2>
+          <ul class="space-y-4">
+            <li class="flex gap-3 text-slate-300">
+              <span class="text-amber-500 text-xl">◆</span>
+              <span>Peisaje spectaculoase ale Carpaților cu viste în 360 de grade</span>
+            </li>
+            <li class="flex gap-3 text-slate-300">
+              <span class="text-amber-500 text-xl">◆</span>
+              <span>Cunoștințe locale și povești despre fauna și flora locală</span>
+            </li>
+            <li class="flex gap-3 text-slate-300">
+              <span class="text-amber-500 text-xl">◆</span>
+              <span>Tehnici avansate de alpinism și navigație în teren dificil</span>
+            </li>
+            <li class="flex gap-3 text-slate-300">
+              <span class="text-amber-500 text-xl">◆</span>
+              <span>Siguritate garantată cu echipament profesional și protocoale verificate</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- Sidebar Info -->
+      <div class="lg:col-span-1">
+        <!-- Quick Info -->
+        <div class="glass p-8 rounded-xl mb-8 sticky top-24">
+          <h3 class="text-2xl font-bold text-slate-100 mb-6">Detalii Tur</h3>
+
+          <div class="space-y-6">
+            <div>
+              <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Locație</p>
+              <p class="text-slate-200 font-semibold text-lg">{location}</p>
+            </div>
+
+            <div>
+              <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Dificultate</p>
+              <Badge text={difficulty} className={difficultyColor} />
+            </div>
+
+            <div>
+              <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Durată</p>
+              <p class="text-slate-200 font-semibold text-lg">{duration}</p>
+            </div>
+
+            <div>
+              <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Distanță</p>
+              <p class="text-slate-200 font-semibold text-lg">{distance}</p>
+            </div>
+
+            <div>
+              <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Elevație</p>
+              <p class="text-slate-200 font-semibold text-lg">{elevationGain}</p>
+            </div>
+
+            <div>
+              <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Mărime Grup</p>
+              <p class="text-slate-200 font-semibold text-lg">{groupSize}</p>
+            </div>
+
+            <div>
+              <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Sezon</p>
+              <div class="flex flex-wrap gap-2">
+                {season.map((s) => (
+                  <Badge text={s} color="info" />
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Status</p>
+              <Badge text={statusBadge.text} className={statusBadge.color} />
+            </div>
+          </div>
+
+          <Button href="/contact" variant="primary" size="lg" className="w-full mt-8">
+            Rezervă Tur
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <CTASection
+    title="Interesat de acest tur?"
+    description={`Contactează-mă pentru a discuta detaliile turului ${title} și pentru a pune la punct o aventură neuitată în munții Carpaților.`}
+    ctaText="Contactează-mă"
+    ctaHref="/contact"
+  />
+</BaseLayout>

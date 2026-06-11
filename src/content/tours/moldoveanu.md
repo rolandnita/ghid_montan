@@ -1,0 +1,28 @@
+---
+title: "Vârful Moldoveanu - Ascensiunea Regelui Carpaților"
+slug: "varf-moldoveanu"
+location: "Sibiu, Carpații Meridionali"
+difficulty: "Dificil"
+duration: "2 zile"
+distance: "18 km"
+elevationGain: "1400 m"
+groupSize: "2-6 persoane"
+season:
+  - "Iunie"
+  - "Iulie"
+  - "August"
+  - "Septembrie"
+status: "disponibil"
+description: "Ascensia la Vârful Moldoveanu (2544 m), cel mai înalt vârf din Carpații Români. Această expediere de două zile combină peisaje spectaculoase, alpinism de nivel mediu și o experiență nevăzută a celui mai impozant munte din România. Vom porni din cabana Zamora, traversând pădurile de molid și ajungând la ușile celui mai înalt loc din țară. Vârful oferă viste în 360 de grade asupra întregii cadene montane. O aventură pe care fiecare alpinist ar trebui s-o trăiască cel puțin o dată."
+equipment:
+  - "Rucsac 40-50L"
+  - "Cizme de trekking waterproof"
+  - "Haine în straturi (strat de bază termic, fleece, jachetă impermeabilă)"
+  - "Șapcă și mănuși (chiar și vara)"
+  - "Baterie externă și lanternă frontală"
+  - "Apă (minim 2L) și mâncare ușoară"
+  - "Protecție solară și insecticid"
+  - "Ghete de sprijin (beton)"
+  - "Echipament de siguranță profesional (furnizat)"
+image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
+---

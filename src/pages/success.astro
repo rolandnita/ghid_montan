@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<BaseLayout
+  title="Mesaj Trimis cu Succes"
+  description="Mulțumim pentru mesajul tău. Voi reveni cu răspuns în curând."
+  currentPath="/success"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="text-6xl mb-6">✓</div>
+      <h1 class="text-5xl font-bold text-slate-100 mb-4">Mesaj Trimis cu Succes!</h1>
+      <p class="text-xl text-slate-400 mb-8">
+        Mulțumesc pentru mesajul tău. Am primit cererea și voi reveni cu răspuns în cel mult 24 de ore.
+      </p>
+
+      <div class="glass p-8 rounded-xl mb-8">
+        <h2 class="text-2xl font-bold text-slate-100 mb-4">Ce urmează?</h2>
+        <ul class="space-y-4 text-slate-300 text-left">
+          <li class="flex items-start gap-3">
+            <span class="text-amber-500 text-2xl flex-shrink-0">→</span>
+            <span>Voi verifica mesajul și mă voi gândi la răspuns cel mai potrivit</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-amber-500 text-2xl flex-shrink-0">→</span>
+            <span>Voi trimite răspunsul pe email sau te voi suna pe telefon (dacă l-ai furnizat)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-amber-500 text-2xl flex-shrink-0">→</span>
+            <span>Vom discuta detaliile turului, disponibilitatea și orice întrebări ai putea avea</span>
+          </li>
+        </ul>
+      </div>
+
+      <p class="text-slate-400 mb-8">
+        Dacă ai nevoie urgentă de răspuns, poți suna direct la <strong>+40 123 456 7890</strong> (8AM - 8PM).
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/" variant="primary" size="lg">
+          Înapoi la Home
+        </Button>
+        <Button href="/tours" variant="secondary" size="lg">
+          Vezi Tururile
+        </Button>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import CTASection from '../components/CTASection.astro';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('articles');
+const categories = [...new Set(allArticles.map((a) => a.data.category))];
+
+---
+
+<BaseLayout
+  title="Academia de Munte"
+  description="Sfaturi practice, articole educative și ghiduri pentru aventurieri. Învață de la un ghid profesionist de munte."
+  currentPath="/academy"
+>
+  <Hero
+    title="Academia de Munte"
+    subtitle="Articole educative, sfaturi practice și ghiduri aprofundate pentru a-ți îmbunătăți abilitățile de alpinist și pentru a înțelegi mai bine munții."
+    ctaHref="/academy"
+    ctaText="Explorează articolele"
+  />
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <SectionTitle
+      title="Articole și Resurse"
+      subtitle="Sfaturi și cunoștințe culese din experiență practică în munte"
+    />
+
+    <!-- Category filter (simple, no JS needed for initial load) -->
+    <div class="mb-12">
+      <p class="text-slate-400 text-sm mb-4">Categorii:</p>
+      <div class="flex flex-wrap gap-2">
+        <a href="/academy" class="px-4 py-2 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/30">
+          Toate
+        </a>
+        {categories.map((cat) => (
+          <a href={`/academy?category=${cat}`} class="px-4 py-2 rounded-lg border border-slate-700/50 text-slate-400 hover:text-slate-100 hover:border-amber-500/30 transition-colors">
+            {cat}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Articles grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+      {allArticles.map((article) => (
+        <ArticleCard
+          title={article.data.title}
+          excerpt={article.data.excerpt}
+          category={article.data.category}
+          publishedAt={article.data.publishedAt}
+          readingTime={article.data.readingTime}
+          image={article.data.image}
+          slug={article.data.slug}
+        />
+      ))}
+    </div>
+
+    <!-- Featured article highlight -->
+    <div class="glass p-8 rounded-xl border-l-4 border-amber-500">
+      <h3 class="text-2xl font-bold text-slate-100 mb-3">💡 Sfatul Zilei</h3>
+      <p class="text-slate-300 mb-4">
+        "Cel mai important lucru în alpinism nu e viteza - e siguranța. Fiecare pas trebuie calculat,
+        fiecare decizie trebuie gândită. Munții vor fi acolo mâine, dar tu trebuie să te întorci acasă
+        astazi."
+      </p>
+      <p class="text-slate-400 text-sm">— Alexandru Cristian, Ghid de Munte</p>
+    </div>
+  </div>
+
+  <CTASection
+    title="Ai o întrebare specifică?"
+    description="Nu găsești răspunsul pe care îl cauți? Contactează-mă direct și voi răspunde cu plăcere."
+    ctaText="Pune o întrebare"
+    ctaHref="/contact"
+  />
+</BaseLayout>

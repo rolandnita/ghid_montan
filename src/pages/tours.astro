@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import TourCard from '../components/TourCard.astro';
+import CTASection from '../components/CTASection.astro';
+import { getCollection } from 'astro:content';
+
+const allTours = await getCollection('tours');
+---
+
+<BaseLayout
+  title="Tururi de Munte"
+  description="Descoperă colecția noastră de tururi montane în Carpații Români. De la ușor la foarte dificil, avem ceva pentru toți."
+  currentPath="/tours"
+>
+  <Hero
+    title="Tururi de Munte"
+    subtitle="Explorează cel mai frumos munte din România cu tururi ghidate personalizate. De la vânătoare de stele la ascensiuni montane de neuitând."
+    ctaHref="/contact"
+    ctaText="Cere mai mult detalii"
+  />
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <SectionTitle
+      title="Colecția de Tururi"
+      subtitle="Fiecare tur este personalizat după nivelul tău și preferințele tale. Grupe mici (2-6 persoane) pentru o experiență de neuitată."
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      {allTours.map((tour) => (
+        <TourCard
+          title={tour.data.title}
+          location={tour.data.location}
+          difficulty={tour.data.difficulty}
+          duration={tour.data.duration}
+          distance={tour.data.distance}
+          elevationGain={tour.data.elevationGain}
+          status={tour.data.status}
+          image={tour.data.image}
+          slug={tour.data.slug}
+        />
+      ))}
+    </div>
+
+    <!-- Info section -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 pt-20 border-t border-slate-800/50">
+      <div class="glass p-8 rounded-xl">
+        <h3 class="text-xl font-bold text-slate-100 mb-3">📅 Disponibilitate</h3>
+        <p class="text-slate-400">
+          Tururile sunt disponibile pe tot parcursul anului. Prefer grupuri mici cu preaviz minim 2
+          săptămâni pentru a personaliza experiența.
+        </p>
+      </div>
+
+      <div class="glass p-8 rounded-xl">
+        <h3 class="text-xl font-bold text-slate-100 mb-3">💰 Prețuri</h3>
+        <p class="text-slate-400">
+          Prețurile variază în funcție de dificultate și durata turului. Contactează-mă pentru o ofertă
+          personalizată și detalii despre pachete de grup.
+        </p>
+      </div>
+
+      <div class="glass p-8 rounded-xl">
+        <h3 class="text-xl font-bold text-slate-100 mb-3">🎒 Echipament</h3>
+        <p class="text-slate-400">
+          Furnizez echipament de siguritate profesional. Ai nevoie doar de haine corespunzătoare și
+          echipament personal de alpinism.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <CTASection
+    title="Nu găsești turoul perfect?"
+    description="Pot organiza tururi personalizate după preferințele tale. Contactează-mă pentru a discuta o itineră care se potrivește perfect pentru tine."
+    ctaText="Cere tur personalizat"
+    ctaHref="/contact"
+  />
+</BaseLayout>

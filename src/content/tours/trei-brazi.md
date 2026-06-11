@@ -1,0 +1,25 @@
+---
+title: "Trei Brazi - Vânătoare de Stele și Peisaje Alpine"
+slug: "trei-brazi"
+location: "Prahova, Carpații de Nord"
+difficulty: "Moderat"
+duration: "1 zi"
+distance: "12 km"
+elevationGain: "800 m"
+groupSize: "3-6 persoane"
+season:
+  - "Iulie"
+  - "August"
+  - "Septembrie"
+status: "disponibil"
+description: "Trei Brazi (2289 m) este destinația ideală pentru vânători de stele și iubitori de fotografie. Această tur de o singură zi porni din Sinaia, trecând prin păduri dese de molid și ajungând la zarea pitorească a platoului montan. Vârful este celebru pentru ciurile sale spectaculoase, în special în august când sunt o mie de stele vizibile pe cer. Drumul e relativ ușor, potrivit pentru alpiniști de nivel mediu, cu pauze frecvente pentru admirarea peisajului."
+equipment:
+  - "Rucsac 25-35L"
+  - "Cizme de trekking"
+  - "Haine în straturi + jachetă impermeabilă"
+  - "Apă și mâncare ușoară"
+  - "Fotoaparat sau telefon (opțional)"
+  - "Lanternă frontală"
+  - "Protecție solară"
+image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&h=600&fit=crop"
+---

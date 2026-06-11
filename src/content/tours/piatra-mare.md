@@ -1,0 +1,28 @@
+---
+title: "Piatra Mare - Trekking Alpine cu Viste Panoramice"
+slug: "piatra-mare"
+location: "Hunedoara, Carpații de Vest"
+difficulty: "Moderat"
+duration: "2 zile"
+distance: "20 km"
+elevationGain: "1100 m"
+groupSize: "2-6 persoane"
+season:
+  - "Mai"
+  - "Iunie"
+  - "Iulie"
+  - "Septembrie"
+status: "disponibil"
+description: "Piatra Mare este cea mai înaltă coamă din Carpații Occidentali, oferind o aventură memorabilă prin peisajele alpine cele mai frumoase din regiune. Această tur de două zile ne va duce prin păduri primare, peste puntea naturală și până la vârful principal (2558 m), de unde vistele se întind pe sute de kilometri. Un traseu perfect pentru cei care vor să experimenteze adevăratul alpinism fără dificultăți extreme. Vom campа sub stele și ne vom trezi cu soarele pe creasta muntelui."
+equipment:
+  - "Rucsac 50-65L"
+  - "Cizme de alpinism"
+  - "Sac de dormit (-10°C)"
+  - "Mat de dormit izolant"
+  - "Cort ușor (opțional, furnizez)"
+  - "Aragază și echipament de gătit"
+  - "Haine multiple straturi + apărare vânt și apă"
+  - "Lanternă și baterii de rezervă"
+  - "Hrană deshidratată și apă"
+image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
+---

@@ -1,0 +1,60 @@
+---
+import Badge from './Badge.astro';
+import { formatDate } from '../utils/config';
+
+interface Props {
+  title: string;
+  excerpt: string;
+  category: string;
+  publishedAt: Date;
+  readingTime: number;
+  image: string;
+  slug: string;
+}
+
+const {
+  title,
+  excerpt,
+  category,
+  publishedAt,
+  readingTime,
+  image,
+  slug,
+} = Astro.props;
+---
+
+<a href={`/academy/${slug}`} class="group">
+  <div class="glass-hover overflow-hidden h-full">
+    <!-- Image -->
+    <div class="relative h-48 sm:h-56 overflow-hidden">
+      <img
+        src={image}
+        alt={title}
+        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-950/80"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="p-6">
+      <!-- Category badge -->
+      <Badge text={category} color="info" />
+
+      <!-- Title -->
+      <h3 class="text-xl font-bold text-slate-100 mt-4 mb-3 group-hover:text-amber-400 transition-colors line-clamp-2">
+        {title}
+      </h3>
+
+      <!-- Excerpt -->
+      <p class="text-slate-400 text-sm mb-4 line-clamp-2">
+        {excerpt}
+      </p>
+
+      <!-- Meta -->
+      <div class="flex items-center justify-between text-xs text-slate-500 border-t border-slate-700/50 pt-4">
+        <span>{formatDate(publishedAt)}</span>
+        <span>{readingTime} min read</span>
+      </div>
+    </div>
+  </div>
+</a>

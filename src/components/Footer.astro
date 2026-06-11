@@ -1,0 +1,80 @@
+---
+import { SITE_CONFIG } from '../utils/config';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-slate-800/50 bg-slate-950/50 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Main footer content -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+      <!-- Brand -->
+      <div class="md:col-span-1">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-10 h-10 bg-gradient-to-br from-amber-600 to-amber-500 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold">⛏</span>
+          </div>
+          <span class="text-lg font-bold tracking-tight text-slate-100">{SITE_CONFIG.siteName}</span>
+        </div>
+        <p class="text-slate-400 text-sm">
+          Ghid profesionist de munte cu experiență militară în Carpații Români.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-slate-100 font-semibold mb-4">Navigare</h3>
+        <ul class="space-y-2">
+          <li><a href="/" class="text-slate-400 hover:text-amber-400 transition-colors">Home</a></li>
+          <li><a href="/about" class="text-slate-400 hover:text-amber-400 transition-colors">Despre</a></li>
+          <li><a href="/tours" class="text-slate-400 hover:text-amber-400 transition-colors">Tururi</a></li>
+          <li><a href="/academy" class="text-slate-400 hover:text-amber-400 transition-colors">Academia</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="text-slate-100 font-semibold mb-4">Servicii</h3>
+        <ul class="space-y-2">
+          <li><a href="/tours" class="text-slate-400 hover:text-amber-400 transition-colors">Tururi montane</a></li>
+          <li><a href="/academy" class="text-slate-400 hover:text-amber-400 transition-colors">Curs alpinism</a></li>
+          <li><a href="/academy" class="text-slate-400 hover:text-amber-400 transition-colors">Pregătire fizică</a></li>
+          <li><a href="/contact" class="text-slate-400 hover:text-amber-400 transition-colors">Consultații</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-slate-100 font-semibold mb-4">Contact</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href={`mailto:${SITE_CONFIG.email}`} class="text-slate-400 hover:text-amber-400 transition-colors break-all">
+              {SITE_CONFIG.email}
+            </a>
+          </li>
+          <li>
+            <a href={`tel:${SITE_CONFIG.phone}`} class="text-slate-400 hover:text-amber-400 transition-colors">
+              {SITE_CONFIG.phone}
+            </a>
+          </li>
+          <li class="text-slate-400">
+            {SITE_CONFIG.location}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-slate-800/50 pt-8 mb-8"></div>
+
+    <!-- Bottom section -->
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-slate-500 text-sm">
+        © {currentYear} {SITE_CONFIG.siteName}. Toate drepturile rezervate.
+      </p>
+      <p class="text-slate-500 text-sm text-center">
+        ⚠️ <strong>Demo Concept</strong> - Site demonstrativ pentru portofoliu. Conținut de placeholder.
+      </p>
+    </div>
+  </div>
+</footer>
