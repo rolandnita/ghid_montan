@@ -7,26 +7,36 @@ interface Props {
 
 const { currentPath = '' } = Astro.props;
 
-const base = import.meta.env.BASE_URL;
+// Ensure BASE_URL always ends with "/"
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+const buildUrl = (path: string = '') => `${baseUrl}${path}`;
 
 const navItems = [
-  { label: 'Home', href: base },
-  { label: 'Despre', href: `${base}about/` },
-  { label: 'Tururi', href: `${base}tours/` },
-  { label: 'Academia', href: `${base}academy/` },
-  { label: 'Contact', href: `${base}contact/` },
+  { label: 'Home', href: buildUrl() },
+  { label: 'Despre', href: buildUrl('about/') },
+  { label: 'Tururi', href: buildUrl('tours/') },
+  { label: 'Academia', href: buildUrl('academy/') },
+  { label: 'Contact', href: buildUrl('contact/') },
 ];
 
-const normalizePath = (path: string) => path.replace(/\/$/, '');
+const normalizePath = (path: string) =>
+  path.replace(/\/+$/, '');
 
 const isActive = (href: string) => {
-  const normalizedHref = normalizePath(href);
-  const normalizedCurrentPath = normalizePath(currentPath);
+  const current = normalizePath(currentPath);
+  const target = normalizePath(href);
 
-  if (href === base && (currentPath === '/' || currentPath === base)) return true;
-  if (href !== base && normalizedCurrentPath.startsWith(normalizedHref)) return true;
+  if (target === normalizePath(baseUrl)) {
+    return (
+      current === '' ||
+      current === normalizePath(baseUrl)
+    );
+  }
 
-  return false;
+  return current.startsWith(target);
 };
 ---
 
@@ -34,7 +44,7 @@ const isActive = (href: string) => {
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-2 group">
+      <a href={baseUrl} class="flex items-center gap-2 group">
         <div class="w-10 h-10 bg-gradient-to-br from-amber-600 to-amber-500 rounded-lg flex items-center justify-center">
           <span class="text-white font-bold text-lg">⛏</span>
         </div>
